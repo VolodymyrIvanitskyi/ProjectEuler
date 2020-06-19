@@ -5,50 +5,26 @@ namespace Euler1
 {
     class Program
     {
-        static long figure = 600851475143;
+       
         static void Main(string[] args)
         {
-            // 600 851 475 143
-
-            dilnyk(775147); // перевіряються всі числа до кореня числа 600851475143 
-            foreach (long a in dilnyky)
-                Console.WriteLine(a);
-
-
-        }
-        static List<long> dilnyky = new List<long>();
-        static List<long> dilnyk(long number)
-        {
-           for(int i = 3; i < number; i ++)
-            {
-                if (figure % i == 0)
-                    if (IsSimple(i))
-                        dilnyky.Add(i);
-
-
-
-            }
-
-
-
-            return dilnyky;
-        }
-
-        static bool IsSimple(int number)
-        {
-            if (number < 1)
-                return false;
-            if (number == 1)
-                return true;
-            if (number >= 2)
-            {
-                for (int i = 2; i < number / 2; i++)
+            
+            for(int i = 500; i < 1000; i++)
+                for(int j = 500; j < 1000; j++)
                 {
-                    if (number % i == 0)
-                        return false;
+                    if(IsPolindrome(i*j))
+                        Console.WriteLine(i*j);
                 }
-            }
-            return true;
+
+
         }
+
+        static bool IsPolindrome(int number)
+        {
+            if (number % 10 == number / 100000 && (number % 100)/10 == (number / 10000)%10 && (number % 1000) / 100 == (number / 1000) % 100)
+                return true;
+            return false;
+        }
+        
     }
 }
