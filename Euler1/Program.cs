@@ -1,28 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Euler1
 {
     class Program
     {
+        static long figure = 600851475143;
         static void Main(string[] args)
         {
-            int figure1 = 1;
-            int figure2 = 2;
-            int figure3 = figure1 + figure2;
-            int sum = figure1 + figure2;
+            // 600 851 475 143
 
-            while ((figure1+figure2) < 4000000)
+            dilnyk(775147); // перевіряються всі числа до кореня числа 600851475143 
+            foreach (long a in dilnyky)
+                Console.WriteLine(a);
+
+
+        }
+        static List<long> dilnyky = new List<long>();
+        static List<long> dilnyk(long number)
+        {
+           for(int i = 3; i < number; i ++)
             {
-                figure3 = figure1 + figure2;
-                figure1 = figure2;
-                figure2 = figure3;
-                Console.WriteLine(figure3+", ");
-                if (figure3 % 2 == 0)
-                    sum += figure3;
+                if (figure % i == 0)
+                    if (IsSimple(i))
+                        dilnyky.Add(i);
+
+
 
             }
 
-            Console.WriteLine($"Sum = {sum}");
+
+
+            return dilnyky;
+        }
+
+        static bool IsSimple(int number)
+        {
+            if (number < 1)
+                return false;
+            if (number == 1)
+                return true;
+            if (number >= 2)
+            {
+                for (int i = 2; i < number / 2; i++)
+                {
+                    if (number % i == 0)
+                        return false;
+                }
+            }
+            return true;
         }
     }
 }
