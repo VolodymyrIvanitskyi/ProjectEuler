@@ -6,15 +6,23 @@ namespace Euler1
     {
         static void Main(string[] args)
         {
-            int sum = 0;
-            for(int i = 0; i < 10000; i++)
+            int figure1 = 1;
+            int figure2 = 2;
+            int figure3 = figure1 + figure2;
+            int sum = figure1 + figure2;
+
+            while ((figure1+figure2) < 4000000)
             {
-                if(i%3==0 || i%5 == 0)
-                {
-                    sum += i;
-                }
+                figure3 = figure1 + figure2;
+                figure1 = figure2;
+                figure2 = figure3;
+                Console.WriteLine(figure3+", ");
+                if (figure3 % 2 == 0)
+                    sum += figure3;
+
             }
-            Console.WriteLine("Sum = "+ sum);
+
+            Console.WriteLine($"Sum = {sum}");
         }
     }
 }
